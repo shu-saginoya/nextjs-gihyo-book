@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint --dir src",
     "format": "next lint --fix --dir src",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
