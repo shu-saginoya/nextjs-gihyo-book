@@ -4,8 +4,8 @@ import React from 'react'
 type ImageShape = 'circle' | 'square'
 type ShapeImageProps = {
   src: string
-  width: string
-  height: string
+  width: number
+  height: number
   alt: string
   shape?: ImageShape
 }
