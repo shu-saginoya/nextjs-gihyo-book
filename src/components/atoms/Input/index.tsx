@@ -2,14 +2,14 @@
 import React from 'react'
 
 export type InputProps = {
-  name?: string
+  name: string
+  value: string
+  onChange: (name: string, value: string) => void
   placeholder?: string
   pattern?: string
   disabled?: boolean
-  value?: string
   hasBorder?: boolean
   hasError?: boolean
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const baseStyle = 'p-3 box-border w-full placeholder:text-primary text-black'
@@ -29,11 +29,16 @@ const Input: React.FC<InputProps> = ({
   pattern = undefined,
   disabled = false,
   value = '',
+  onChange,
   hasBorder = true,
   hasError,
-  onChange,
 }) => {
   const borderColorStyle = borderColor[hasError ? 'error' : 'default']
+
+  // イベントハンドラーをローカルで定義し、必要な値のみを親に渡す
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(name, e.target.value)
+  }
 
   return (
     <input
@@ -43,7 +48,7 @@ const Input: React.FC<InputProps> = ({
       pattern={pattern}
       disabled={disabled}
       value={value}
-      onChange={onChange}
+      onChange={handleChange}
       className={`${baseStyle} ${hasBorder ? borderStyle : ''} ${borderColorStyle}`}
     />
   )
