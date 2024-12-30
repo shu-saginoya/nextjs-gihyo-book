@@ -9,12 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#fe9611',
-        primaryDark: '#ef7b07',
-        secondary: '#3577fc',
-        secondaryDark: '#1741de',
-        danger: '#bf6e6e',
-        dangerDark: '#8f4646',
+        primary: '#3b82f6',
+        primaryDark: '#1e40af',
+        secondary: '#22c55e',
+        secondaryDark: '#166534',
+        danger: '#ef4444',
+        dangerDark: '#991b1b',
+
         background: 'var(--background)',
         foreground: 'var(--foreground)',
       },
