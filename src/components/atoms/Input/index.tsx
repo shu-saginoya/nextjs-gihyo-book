@@ -1,13 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
 
-export type InputProps = {
-  name: string
-  value: string
-  onChange: (name: string, value: string) => void
-  placeholder?: string
-  pattern?: string
-  disabled?: boolean
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   hasBorder?: boolean
   hasError?: boolean
 }
@@ -23,33 +17,15 @@ const borderColor = {
  * インプット
  *
  */
-const Input: React.FC<InputProps> = ({
-  name,
-  placeholder = undefined,
-  pattern = undefined,
-  disabled = false,
-  value = '',
-  onChange,
-  hasBorder = true,
-  hasError,
-}) => {
+const Input: React.FC<InputProps> = (props: InputProps) => {
+  const { hasBorder = true, hasError, ...rest } = props
   const borderColorStyle = borderColor[hasError ? 'error' : 'default']
-
-  // イベントハンドラーをローカルで定義し、必要な値のみを親に渡す
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(name, e.target.value)
-  }
 
   return (
     <input
       type="text"
-      name={name}
-      placeholder={placeholder}
-      pattern={pattern}
-      disabled={disabled}
-      value={value}
-      onChange={handleChange}
       className={`${baseStyle} ${hasBorder ? borderStyle : ''} ${borderColorStyle}`}
+      {...rest}
     />
   )
 }

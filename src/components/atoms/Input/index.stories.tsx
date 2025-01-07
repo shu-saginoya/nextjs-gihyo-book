@@ -33,18 +33,10 @@ export default {
 
 type Story = StoryObj<typeof Input>
 
-const handleChange = () => {
-  // Storybook action loggerを使用する場合:
-  // action('onChange')()
-  console.log('onChange called')
-}
-
 // テキスト入力
 export const Normal: Story = {
   args: {
     name: 'normal',
-    value: '',
-    onChange: handleChange,
     placeholder: 'プレースホルダー',
   },
 }
@@ -53,8 +45,6 @@ export const Normal: Story = {
 export const Error: Story = {
   args: {
     name: 'error',
-    value: '',
-    onChange: handleChange,
     hasError: true,
     placeholder: 'プレースホルダー',
   },
